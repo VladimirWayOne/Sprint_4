@@ -42,13 +42,11 @@ class TestYaScooterHomePage:
 
     @allure.step('Отобразить ответ на первый вопрос')
     def test_faq_click_first_question_show_answer(self, driver):
-        # TODO Разобраться с локатором ответа
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
         ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_faq_question(question_number=0)
-        # print(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=0))
-        answer = ya_scooter_home_page.find_element(*YaScooterHomePageLocator.FAQ_ANSWER(answer_number=0))
+        answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=0))
 
         assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer1
 
