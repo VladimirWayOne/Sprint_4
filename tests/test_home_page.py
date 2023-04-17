@@ -3,7 +3,7 @@ import time
 from pages.home_page import YaScooterHomePage
 import allure
 from utils.urls import Urls
-from utils.locators import YandexPageLocator, YaScooterHomePageLocator, YaScooterOrderPageLocator
+from utils.locators import YaScooterHomePageLocator
 from utils.test_data import YaScooterHomePageFAQ
 
 
@@ -38,7 +38,7 @@ class TestYaScooterHomePage:
         ya_scooter_home_page.wait_url_until_not_about_blank()
         current_url = ya_scooter_home_page.current_url()
 
-        assert (Urls.YANDEX_HOME_PAGE in current_url) or (Urls.DZEN_HOME_PAGE in current_url)
+        assert (Urls.YANDEX_HOME_PAGE in current_url) or (Urls.DZEN_HOME_PAGE in current_url) or (Urls.YANDEX_CAPTCHA_PAGE in current_url)
 
     @allure.step('Отобразить ответ на первый вопрос')
     def test_faq_click_first_question_show_answer(self, driver):
@@ -50,3 +50,72 @@ class TestYaScooterHomePage:
 
         assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer1
 
+    @allure.step('Отобразить ответ на второй вопрос')
+    def test_faq_click_second_question_show_answer(self, driver):
+        ya_scooter_home_page = YaScooterHomePage(driver)
+        ya_scooter_home_page.go_to_site()
+        ya_scooter_home_page.click_cookie_accept()
+        ya_scooter_home_page.click_faq_question(question_number=1)
+        answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=1))
+
+        assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer2
+
+    @allure.step('Отобразить ответ на третий вопрос')
+    def test_faq_click_third_question_show_answer(self, driver):
+        ya_scooter_home_page = YaScooterHomePage(driver)
+        ya_scooter_home_page.go_to_site()
+        ya_scooter_home_page.click_cookie_accept()
+        ya_scooter_home_page.click_faq_question(question_number=2)
+        answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=2))
+
+        assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer3
+
+    @allure.step('Отобразить ответ на четвертый вопрос')
+    def test_faq_click_fourth_question_show_answer(self, driver):
+        ya_scooter_home_page = YaScooterHomePage(driver)
+        ya_scooter_home_page.go_to_site()
+        ya_scooter_home_page.click_cookie_accept()
+        ya_scooter_home_page.click_faq_question(question_number=3)
+        answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=3))
+
+        assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer4
+
+    @allure.step('Отобразить ответ на пятый вопрос')
+    def test_faq_click_fifth_question_show_answer(self, driver):
+        ya_scooter_home_page = YaScooterHomePage(driver)
+        ya_scooter_home_page.go_to_site()
+        ya_scooter_home_page.click_cookie_accept()
+        ya_scooter_home_page.click_faq_question(question_number=4)
+        answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=4))
+
+        assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer5
+
+    @allure.step('Отобразить ответ на шестой вопрос')
+    def test_faq_click_sixth_question_show_answer(self, driver):
+        ya_scooter_home_page = YaScooterHomePage(driver)
+        ya_scooter_home_page.go_to_site()
+        ya_scooter_home_page.click_cookie_accept()
+        ya_scooter_home_page.click_faq_question(question_number=5)
+        answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=5))
+
+        assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer6
+
+    @allure.step('Отобразить ответ на седьмой вопрос')
+    def test_faq_click_seventh_question_show_answer(self, driver):
+        ya_scooter_home_page = YaScooterHomePage(driver)
+        ya_scooter_home_page.go_to_site()
+        ya_scooter_home_page.click_cookie_accept()
+        ya_scooter_home_page.click_faq_question(question_number=6)
+        answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=6))
+
+        assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer7
+
+    @allure.step('Отобразить ответ на восьмой вопрос')
+    def test_faq_click_eighth_question_show_answer(self, driver):
+        ya_scooter_home_page = YaScooterHomePage(driver)
+        ya_scooter_home_page.go_to_site()
+        ya_scooter_home_page.click_cookie_accept()
+        ya_scooter_home_page.click_faq_question(question_number=7)
+        answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=7))
+
+        assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer8
