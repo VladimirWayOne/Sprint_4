@@ -1,5 +1,3 @@
-import time
-
 from pages.order_page import YaScooterOrderPage
 import allure
 from utils.urls import Urls
@@ -47,8 +45,8 @@ class TestYaScooterOrderPage:
         ya_scooter_order_page.go_next()
         assert ya_scooter_order_page.find_element(YaScooterOrderPageLocator.INCORRECT_TELEPHONE_NUMBER_MESSAGE).is_displayed()
 
-    @allure.description('Переход на страницу с выбором самоката')
-    def test_order_page_go_to_choose_scooter_user_data_correct_open_order_params(self, driver):
+    @allure.description('Заполнить данные на этапе "Для кого самокат" и перейти на этап "Про аренду"')
+    def test_order_page_go_to_choose_scooter_user_data_correct_open_about_rent(self, driver):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
         ya_scooter_order_page.input_first_name('Владим')
@@ -58,6 +56,46 @@ class TestYaScooterOrderPage:
         ya_scooter_order_page.input_telephone_number('71111111111')
         ya_scooter_order_page.go_next()
         assert len(ya_scooter_order_page.find_elements(YaScooterOrderPageLocator.ORDER_BUTTON)) > 0
+
+    @allure.description('Заполнить данные на этапе "Про аренду" и оформить заказ')
+    def test_order_page_about_rent_input_correct_data_and_order_show_order_number(self, driver):
+        ya_scooter_order_page = YaScooterOrderPage(driver)
+        ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.input_first_name('Владим')
+        ya_scooter_order_page.input_last_name('Владим')
+        ya_scooter_order_page.input_address('Миусская')
+        ya_scooter_order_page.choose_subway('Беговая')
+        ya_scooter_order_page.input_telephone_number('71111111111')
+        ya_scooter_order_page.go_next()
+        ya_scooter_order_page.input_date('21.02.2023')
+        ya_scooter_order_page.choose_rental_period(0)
+        ya_scooter_order_page.choose_color(0)
+        ya_scooter_order_page.input_comment('Буду в синей куртке')
+        ya_scooter_order_page.click_order()
+        ya_scooter_order_page.click_accept_order()
+        assert len(ya_scooter_order_page.find_elements(YaScooterOrderPageLocator.ORDER_COMPLETED_INFO)) > 0
+
+    @allure.description('Заполнить данные на этапе "Про аренду", оформить заказ и перейти на статус заказа')
+    def test_order_page_create_order_and_go_order_status(self, driver):
+        ya_scooter_order_page = YaScooterOrderPage(driver)
+        ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.input_first_name('Владим')
+        ya_scooter_order_page.input_last_name('Владим')
+        ya_scooter_order_page.input_address('Миусская')
+        ya_scooter_order_page.choose_subway('Беговая')
+        ya_scooter_order_page.input_telephone_number('71111111111')
+        ya_scooter_order_page.go_next()
+        ya_scooter_order_page.input_date('21.02.2023')
+        ya_scooter_order_page.choose_rental_period(0)
+        ya_scooter_order_page.choose_color(0)
+        ya_scooter_order_page.input_comment('Буду в синей куртке')
+        ya_scooter_order_page.click_order()
+        ya_scooter_order_page.click_accept_order()
+        order_number = ya_scooter_order_page.get_order_number()
+        ya_scooter_order_page.click_go_to_status()
+        current_url = ya_scooter_order_page.current_url()
+        assert (Urls.ORDER_STATUS_PAGE in current_url) and (order_number in current_url)
+
 
 
 
