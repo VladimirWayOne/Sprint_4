@@ -1,3 +1,5 @@
+import re
+
 from pages.base_page import BasePage
 from utils.locators import YaScooterOrderPageLocator as Locators
 import allure
@@ -36,8 +38,29 @@ class YaScooterOrderPage(BasePage):
     @allure.step('Выбор периода аренды')
     def choose_rental_period(self, option: int):
         self.find_element(Locators.RENTAL_PERIOD_FIELD).click()
-        return self.find_elements(Locators.RENTAL_PERIOD_FIELD)[option].click()
+        return self.find_elements(Locators.RENTAL_PERIOD_LIST)[option].click()
 
     @allure.step('Выбор цвета')
     def choose_color(self, option: int):
         return self.find_elements(Locators.COLOR_CHECKBOXES)[option].click()
+
+    @allure.step('Комментарий для курьера')
+    def input_comment(self, comment_text):
+        return self.find_element(Locators.COMMENT_FOR_COURIER_FIELD).send_keys(comment_text)
+
+    @allure.step('Нажать "Заказать"')
+    def click_order(self):
+        return self.find_element(Locators.ORDER_BUTTON).click()
+
+    @allure.step('Подтвердить заказ')
+    def click_accept_order(self):
+        return self.find_element(Locators.ACCEPT_ORDER_BUTTON).click()
+
+    @allure.step('Вычитать номер заказа')
+    def get_order_number(self):
+        about_order_text = self.find_element(Locators.ORDER_COMPLETED_INFO).text
+        return ''.join(re.findall('[0-9]', about_order_text))
+
+    @allure.step('Перейти к статусу заказа')
+    def click_go_to_status(self):
+        return self.find_element(Locators.SHOW_STATUS_BUTTON).click()
