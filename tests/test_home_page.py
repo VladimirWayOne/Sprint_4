@@ -8,7 +8,7 @@ from utils.test_data import YaScooterHomePageFAQ
 
 
 
-@allure.story('Тестирование перехода на страницу Заказать')
+@allure.story('Тестирование домашней страницы')
 class TestYaScooterHomePage:
     @allure.step('Нажатие на верхнюю кнопку заказа')
     def test_click_top_order_button_show_order_page(self, driver):
