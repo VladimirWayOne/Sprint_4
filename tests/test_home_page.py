@@ -7,10 +7,9 @@ from utils.locators import YaScooterHomePageLocator
 from utils.test_data import YaScooterHomePageFAQ
 
 
-
 @allure.story('Тестирование домашней страницы')
 class TestYaScooterHomePage:
-    @allure.step('Нажатие на верхнюю кнопку заказа')
+    @allure.description('Нажатие на верхнюю кнопку заказа')
     def test_click_top_order_button_show_order_page(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -19,7 +18,7 @@ class TestYaScooterHomePage:
         #ya_scooter_home_page.find_element(YaScooterOrderPageLocator.NEXT_BUTTON)
         assert ya_scooter_home_page.current_url() == Urls.ORDER_PAGE
 
-    @allure.step('Нажатие на нижнюю кнопку заказа')
+    @allure.description('Нажатие на нижнюю кнопку заказа')
     def test_click_bottom_order_button_show_order_page(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -28,7 +27,7 @@ class TestYaScooterHomePage:
 
         assert ya_scooter_home_page.current_url() == Urls.ORDER_PAGE
 
-    @allure.step('Перейти на страницу Яндекса/Дзена')
+    @allure.description('Перейти на страницу Яндекса/Дзена')
     def test_click_yandex_button_go_to_yandex(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -40,7 +39,7 @@ class TestYaScooterHomePage:
 
         assert (Urls.YANDEX_HOME_PAGE in current_url) or (Urls.DZEN_HOME_PAGE in current_url) or (Urls.YANDEX_CAPTCHA_PAGE in current_url)
 
-    @allure.step('Отобразить ответ на первый вопрос')
+    @allure.description('Отобразить ответ на первый вопрос')
     def test_faq_click_first_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -50,7 +49,7 @@ class TestYaScooterHomePage:
 
         assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer1
 
-    @allure.step('Отобразить ответ на второй вопрос')
+    @allure.description('Отобразить ответ на второй вопрос')
     def test_faq_click_second_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -60,7 +59,7 @@ class TestYaScooterHomePage:
 
         assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer2
 
-    @allure.step('Отобразить ответ на третий вопрос')
+    @allure.description('Отобразить ответ на третий вопрос')
     def test_faq_click_third_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -70,7 +69,7 @@ class TestYaScooterHomePage:
 
         assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer3
 
-    @allure.step('Отобразить ответ на четвертый вопрос')
+    @allure.description('Отобразить ответ на четвертый вопрос')
     def test_faq_click_fourth_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -80,7 +79,7 @@ class TestYaScooterHomePage:
 
         assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer4
 
-    @allure.step('Отобразить ответ на пятый вопрос')
+    @allure.description('Отобразить ответ на пятый вопрос')
     def test_faq_click_fifth_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -90,7 +89,7 @@ class TestYaScooterHomePage:
 
         assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer5
 
-    @allure.step('Отобразить ответ на шестой вопрос')
+    @allure.description('Отобразить ответ на шестой вопрос')
     def test_faq_click_sixth_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -100,7 +99,7 @@ class TestYaScooterHomePage:
 
         assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer6
 
-    @allure.step('Отобразить ответ на седьмой вопрос')
+    @allure.description('Отобразить ответ на седьмой вопрос')
     def test_faq_click_seventh_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
@@ -110,7 +109,7 @@ class TestYaScooterHomePage:
 
         assert answer.is_displayed() and answer.text == YaScooterHomePageFAQ.answer7
 
-    @allure.step('Отобразить ответ на восьмой вопрос')
+    @allure.description('Отобразить ответ на восьмой вопрос')
     def test_faq_click_eighth_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
