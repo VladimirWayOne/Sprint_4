@@ -7,3 +7,30 @@ class YaScooterHomePageFAQ:
     answer6 = "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится."
     answer7 = "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои."
     answer8 = "Да, обязательно. Всем самокатов! И Москве, и Московской области."
+
+
+class YaScooterOrderPageData:
+    data_sets = {
+        'data_set1': {
+            'first_name': 'Ольга',
+            'last_name': 'Тестовна',
+            'address': 'Доставочная улица',
+            'subway_name': 'Беговая',
+            'telepthone_number': '71111111111',
+            'date': '21.05.2023',
+            'rental_period': 0,
+            'color': [0],
+            'comment_for_courier': 'Буду в синей куртке'
+        },
+        'data_set2':
+            {'first_name': 'Олег',
+             'last_name': 'Тестенко',
+             'address': 'Самокатная улица',
+             'subway_name': 'Лубянка',
+             'telepthone_number': '88888888888',
+             'date': '25.04.2023',
+             'rental_period': 1,
+             'color': [0, 1],
+             'comment_for_courier': 'Предпочтительно синий самокат'
+             },
+    }
