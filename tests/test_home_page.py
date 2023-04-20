@@ -15,7 +15,6 @@ class TestYaScooterHomePage:
         ya_scooter_home_page.go_to_site()
         ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_top_order_button()
-        #ya_scooter_home_page.find_element(YaScooterOrderPageLocator.NEXT_BUTTON)
         assert ya_scooter_home_page.current_url() == Urls.ORDER_PAGE
 
     @allure.description('Нажатие на нижнюю кнопку заказа')
