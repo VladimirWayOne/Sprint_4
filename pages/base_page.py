@@ -1,6 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from utils.urls import Urls
+from utils.locators import BasePageLocator
 
 
 class BasePage:
@@ -29,3 +30,6 @@ class BasePage:
 
     def wait_url_until_not_about_blank(self, time=10):
         return WebDriverWait(self.driver, time).until_not(EC.url_to_be('about:blank'))
+
+    def click_accept_cookie(self):
+        return self.find_element(BasePageLocator.COOKIE_ACCEPT_BUTTON).click()

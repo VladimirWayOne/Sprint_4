@@ -10,6 +10,7 @@ class TestYaScooterOrderPage:
     def test_order_page_first_name_input_incorrect_show_error_message(self, driver):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.click_accept_cookie()
         ya_scooter_order_page.input_first_name('Вqw')
         ya_scooter_order_page.go_next()
         assert ya_scooter_order_page.find_element(YaScooterOrderPageLocator.INCORRECT_FIRST_NAME_MESSAGE).is_displayed()
@@ -18,6 +19,7 @@ class TestYaScooterOrderPage:
     def test_order_page_last_name_input_incorrect_show_error_message(self, driver):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.click_accept_cookie()
         ya_scooter_order_page.input_last_name('Вqw')
         ya_scooter_order_page.go_next()
         assert ya_scooter_order_page.find_element(YaScooterOrderPageLocator.INCORRECT_LAST_NAME_MESSAGE).is_displayed()
@@ -26,6 +28,7 @@ class TestYaScooterOrderPage:
     def test_order_page_address_input_incorrect_show_error_message(self, driver):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.click_accept_cookie()
         ya_scooter_order_page.input_address('Вqw')
         ya_scooter_order_page.go_next()
         assert ya_scooter_order_page.find_element(YaScooterOrderPageLocator.INCORRECT_ADDRESS_MESSAGE).is_displayed()
@@ -34,6 +37,7 @@ class TestYaScooterOrderPage:
     def test_order_page_subway_input_empty_show_error_message(self, driver):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.click_accept_cookie()
         ya_scooter_order_page.go_next()
         assert ya_scooter_order_page.find_element(YaScooterOrderPageLocator.INCORRECT_SUBWAY_MESSAGE).is_displayed()
 
@@ -41,6 +45,7 @@ class TestYaScooterOrderPage:
     def test_order_page_telephone_number_input_incorrect_show_error_message(self, driver):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.click_accept_cookie()
         ya_scooter_order_page.input_telephone_number('Вqw')
         ya_scooter_order_page.go_next()
         assert ya_scooter_order_page.find_element(YaScooterOrderPageLocator.INCORRECT_TELEPHONE_NUMBER_MESSAGE).is_displayed()
@@ -49,6 +54,7 @@ class TestYaScooterOrderPage:
     def test_order_page_go_to_choose_scooter_user_data_correct_open_about_rent(self, driver):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.click_accept_cookie()
         ya_scooter_order_page.input_first_name('Владим')
         ya_scooter_order_page.input_last_name('Владим')
         ya_scooter_order_page.input_address('Миусская')
@@ -61,6 +67,7 @@ class TestYaScooterOrderPage:
     def test_order_page_about_rent_input_correct_data_and_order_show_order_number(self, driver):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.click_accept_cookie()
         ya_scooter_order_page.input_first_name('Владим')
         ya_scooter_order_page.input_last_name('Владим')
         ya_scooter_order_page.input_address('Миусская')
@@ -79,6 +86,7 @@ class TestYaScooterOrderPage:
     def test_order_page_create_order_and_go_order_status(self, driver):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
+        ya_scooter_order_page.click_accept_cookie()
         ya_scooter_order_page.input_first_name('Владим')
         ya_scooter_order_page.input_last_name('Владим')
         ya_scooter_order_page.input_address('Миусская')

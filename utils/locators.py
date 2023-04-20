@@ -41,7 +41,8 @@ class YaScooterOrderPageLocator:
     SUBWAY_FIELD = [By.XPATH, ".//input[contains(@placeholder,'метро')]"]  # /parent::div
     INCORRECT_SUBWAY_MESSAGE = [By.XPATH, ".//input[contains(@placeholder,'метро')]/parent::div/parent::div/parent::div/div[@class!='select-search']"]
 
-    def SUBWAY_HINT_BUTTON(subway_name):
+    @staticmethod
+    def SUBWAY_HINT_BUTTON(subway_name: str):
         return [By.XPATH, f".//div[text()='{subway_name}']/parent::button"]
 
     TELEPHONE_NUMBER_FIELD = [By.XPATH, ".//input[contains(@placeholder,'Телефон')]"]
@@ -66,5 +67,3 @@ class YaScooterTrackPageLocator:
 
 class YandexPageLocator:
     DOWNLOAD_BUTTON = [By.XPATH, ".//a[text='Установить']"]
-    SEARCH_BUTTON = [By.XPATH, ""]
-    # DOWNLOAD_BROWSER_BUTTON = [By.XPATH, ""]

@@ -24,5 +24,3 @@ class YaScooterHomePage(BasePage):
     def click_faq_question(self, question_number: int):
         elems = self.find_elements(Locators.FAQ_BUTTONS, 10)
         return elems[question_number].click()
-
-
