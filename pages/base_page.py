@@ -36,7 +36,7 @@ class BasePage:
         return WebDriverWait(self.driver, time).until_not(EC.url_to_be('about:blank'))
 
     @allure.step('Принять куки')
-    def click_accept_cookie(self):
+    def click_cookie_accept(self):
         return self.find_element(BasePageLocator.COOKIE_ACCEPT_BUTTON).click()
 
     @allure.step('Перейти на страницу яндекса')
