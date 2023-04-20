@@ -1,7 +1,10 @@
+import pytest
+
 from pages.order_page import YaScooterOrderPage
 import allure
 from utils.urls import Urls
 from utils.locators import YaScooterOrderPageLocator
+from utils.test_data import YaScooterOrderPageData as order_data
 
 
 @allure.story('Тестирование страницы оформления заказа')
@@ -64,39 +67,43 @@ class TestYaScooterOrderPage:
         assert len(ya_scooter_order_page.find_elements(YaScooterOrderPageLocator.ORDER_BUTTON)) > 0
 
     @allure.description('Заполнить данные на этапе "Про аренду" и оформить заказ')
-    def test_order_page_about_rent_input_correct_data_and_order_show_order_number(self, driver):
+    @pytest.mark.parametrize('data_set', ['data_set1', 'data_set2'])
+    def test_order_page_about_rent_input_correct_data_and_order_show_order_number(self, driver, data_set):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
         ya_scooter_order_page.click_accept_cookie()
-        ya_scooter_order_page.input_first_name('Владим')
-        ya_scooter_order_page.input_last_name('Владим')
-        ya_scooter_order_page.input_address('Миусская')
-        ya_scooter_order_page.choose_subway('Беговая')
-        ya_scooter_order_page.input_telephone_number('71111111111')
+        ya_scooter_order_page.input_first_name(order_data.data_sets[data_set]['first_name'])
+        ya_scooter_order_page.input_last_name(order_data.data_sets[data_set]['last_name'])
+        ya_scooter_order_page.input_address(order_data.data_sets[data_set]['address'])
+        ya_scooter_order_page.choose_subway(order_data.data_sets[data_set]['subway_name'])
+        ya_scooter_order_page.input_telephone_number(order_data.data_sets[data_set]['telepthone_number'])
         ya_scooter_order_page.go_next()
-        ya_scooter_order_page.input_date('21.02.2023')
-        ya_scooter_order_page.choose_rental_period(0)
-        ya_scooter_order_page.choose_color(0)
-        ya_scooter_order_page.input_comment('Буду в синей куртке')
+        ya_scooter_order_page.input_date(order_data.data_sets[data_set]['date'])
+        ya_scooter_order_page.choose_rental_period(order_data.data_sets[data_set]['rental_period'])
+        for option in order_data.data_sets[data_set]['color']:
+            ya_scooter_order_page.choose_color(option)
+        ya_scooter_order_page.input_comment(order_data.data_sets[data_set]['comment_for_courier'])
         ya_scooter_order_page.click_order()
         ya_scooter_order_page.click_accept_order()
         assert len(ya_scooter_order_page.find_elements(YaScooterOrderPageLocator.ORDER_COMPLETED_INFO)) > 0
 
     @allure.description('Заполнить данные на этапе "Про аренду", оформить заказ и перейти на статус заказа')
-    def test_order_page_create_order_and_go_order_status(self, driver):
+    @pytest.mark.parametrize('data_set', ['data_set1', 'data_set2'])
+    def test_order_page_create_order_and_go_order_status(self, driver, data_set):
         ya_scooter_order_page = YaScooterOrderPage(driver)
         ya_scooter_order_page.go_to_site(Urls.ORDER_PAGE)
         ya_scooter_order_page.click_accept_cookie()
-        ya_scooter_order_page.input_first_name('Владим')
-        ya_scooter_order_page.input_last_name('Владим')
-        ya_scooter_order_page.input_address('Миусская')
-        ya_scooter_order_page.choose_subway('Беговая')
-        ya_scooter_order_page.input_telephone_number('71111111111')
+        ya_scooter_order_page.input_first_name(order_data.data_sets[data_set]['first_name'])
+        ya_scooter_order_page.input_last_name(order_data.data_sets[data_set]['last_name'])
+        ya_scooter_order_page.input_address(order_data.data_sets[data_set]['address'])
+        ya_scooter_order_page.choose_subway(order_data.data_sets[data_set]['subway_name'])
+        ya_scooter_order_page.input_telephone_number(order_data.data_sets[data_set]['telepthone_number'])
         ya_scooter_order_page.go_next()
-        ya_scooter_order_page.input_date('21.02.2023')
-        ya_scooter_order_page.choose_rental_period(0)
-        ya_scooter_order_page.choose_color(0)
-        ya_scooter_order_page.input_comment('Буду в синей куртке')
+        ya_scooter_order_page.input_date(order_data.data_sets[data_set]['date'])
+        ya_scooter_order_page.choose_rental_period(order_data.data_sets[data_set]['rental_period'])
+        for option in order_data.data_sets[data_set]['color']:
+            ya_scooter_order_page.choose_color(option)
+        ya_scooter_order_page.input_comment(order_data.data_sets[data_set]['comment_for_courier'])
         ya_scooter_order_page.click_order()
         ya_scooter_order_page.click_accept_order()
         order_number = ya_scooter_order_page.get_order_number()
