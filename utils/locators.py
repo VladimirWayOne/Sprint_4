@@ -14,8 +14,6 @@ class YaScooterHomePageLocator:
     FAQ_BUTTONS = [By.XPATH, ".//div[@class='accordion__button']"]
     FAQ_ANSWERS = [By.CSS_SELECTOR, ".accordion__panel > p"]
     ORDER_STATUS_BUTTON = [By.XPATH, ".//button[text()='Статус заказа']"]
-    COOKIE_ACCEPT_BUTTON = [By.XPATH, ".//button[text()='да все привыкли']"]
-    YANDEX_SITE_BUTTON = [By.XPATH, ".//img[@alt='Yandex']/parent::a"]
 
     @staticmethod
     def FAQ_QUESTION_BUTTON( question_number):
