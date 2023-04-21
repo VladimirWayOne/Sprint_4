@@ -20,7 +20,8 @@ class YaScooterOrderPageData:
             'date': '21.05.2023',
             'rental_period': 0,
             'color': [0],
-            'comment_for_courier': 'Буду в синей куртке'
+            'comment_for_courier': 'Буду в синей куртке',
+            'description': 'Корректные данные'
         },
         'data_set2':
             {'first_name': 'Олег',
@@ -31,6 +32,7 @@ class YaScooterOrderPageData:
              'date': '25.04.2023',
              'rental_period': 1,
              'color': [0, 1],
-             'comment_for_courier': 'Предпочтительно синий самокат'
+             'comment_for_courier': 'Предпочтительно синий самокат',
+             'description': 'Корректные данные'
              },
     }
