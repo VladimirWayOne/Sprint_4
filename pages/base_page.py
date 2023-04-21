@@ -22,7 +22,8 @@ class BasePage:
     def go_to_site(self, url=None):
         if url is None:
             url = self.base_url
-        return self.driver.get(url)
+        self.driver.get(url)
+        return self.click_cookie_accept()
 
     @allure.step('Получить текущий URL')
     def current_url(self):

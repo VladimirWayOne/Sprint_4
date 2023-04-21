@@ -13,7 +13,6 @@ class TestYaScooterHomePage:
     def test_click_top_order_button_show_order_page(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_top_order_button()
         assert ya_scooter_home_page.current_url() == Urls.ORDER_PAGE
 
@@ -21,7 +20,6 @@ class TestYaScooterHomePage:
     def test_click_bottom_order_button_show_order_page(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_bottom_order_button()
 
         assert ya_scooter_home_page.current_url() == Urls.ORDER_PAGE
@@ -30,7 +28,6 @@ class TestYaScooterHomePage:
     def test_click_yandex_button_go_to_yandex(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_yandex_button()
         ya_scooter_home_page.switch_window(1)
         ya_scooter_home_page.wait_url_until_not_about_blank()
@@ -42,7 +39,6 @@ class TestYaScooterHomePage:
     def test_faq_click_first_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_faq_question(question_number=0)
         answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=0))
 
@@ -52,7 +48,6 @@ class TestYaScooterHomePage:
     def test_faq_click_second_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_faq_question(question_number=1)
         answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=1))
 
@@ -62,7 +57,6 @@ class TestYaScooterHomePage:
     def test_faq_click_third_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_faq_question(question_number=2)
         answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=2))
 
@@ -72,7 +66,6 @@ class TestYaScooterHomePage:
     def test_faq_click_fourth_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_faq_question(question_number=3)
         answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=3))
 
@@ -82,7 +75,6 @@ class TestYaScooterHomePage:
     def test_faq_click_fifth_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_faq_question(question_number=4)
         answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=4))
 
@@ -92,7 +84,6 @@ class TestYaScooterHomePage:
     def test_faq_click_sixth_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_faq_question(question_number=5)
         answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=5))
 
@@ -102,7 +93,6 @@ class TestYaScooterHomePage:
     def test_faq_click_seventh_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_faq_question(question_number=6)
         answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=6))
 
@@ -112,7 +102,6 @@ class TestYaScooterHomePage:
     def test_faq_click_eighth_question_show_answer(self, driver):
         ya_scooter_home_page = YaScooterHomePage(driver)
         ya_scooter_home_page.go_to_site()
-        ya_scooter_home_page.click_cookie_accept()
         ya_scooter_home_page.click_faq_question(question_number=7)
         answer = ya_scooter_home_page.find_element(YaScooterHomePageLocator.FAQ_ANSWER(answer_number=7))
 
