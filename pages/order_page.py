@@ -64,3 +64,19 @@ class YaScooterOrderPage(BasePage):
     @allure.step('Перейти к статусу заказа')
     def click_go_to_status(self):
         return self.find_element(Locators.SHOW_STATUS_BUTTON).click()
+    
+    @allure.step('Заполнить данные на этапе "Для кого самокат"')
+    def fill_user_data(self, data_set: dict):
+        self.input_first_name(data_set['first_name'])
+        self.input_last_name(data_set['last_name'])
+        self.input_address(data_set['address'])
+        self.choose_subway(data_set['subway_name'])
+        self.input_telephone_number(data_set['telepthone_number'])
+
+    @allure.step('Заполнить данные на этапе "Про аренду"')
+    def fill_rent_data(self, data_set: dict):
+        self.input_date(data_set['date'])
+        self.choose_rental_period(data_set['rental_period'])
+        for option in data_set['color']:
+            self.choose_color(option)
+        self.input_comment(data_set['comment_for_courier'])
